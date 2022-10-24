@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get('/', function ()
 {
     return view('welcome');
 });
+
+
 
 Route::controller(RestaurantController::class)->group(function() 
 {
@@ -39,3 +42,20 @@ Route::controller(RestaurantController::class)->group(function()
 
     Route::get('/product/{product}/shop/{shop}/remove', 'removeShop')->name('product-remove-shop');
 });
+
+Route::controller(CategoryController::class)->group(function() {
+    Route::get('/categories', 'list')->name('categories-list');
+    Route::get('/categories/create', 'createForm')->name('categories-create-form');
+    Route::post('/categories/create', 'create')->name('categories-create');
+    Route::get('/categories/{categories}','show')->name('categories-view');
+    Route::get('/categories/{categories}/update','update-form')->name('categories-update-form');
+    Route::post('/categories/{categories}/update', 'update')->name('categories-update');
+    Route::get('/categories/{categories}/delete', 'delete')->name('categories-delete');
+ 
+    Route::get('/categories/{categories}','show')->name('categories-view');
+    Route::get('/categories/{categories}/product', 'showProduct')->name('categories-view-product');
+    Route::get('/categories/{categories}/product/add', 'addProductForm')->name('categories-add-product-form');
+    Route::post('/categories/{categories}/product/add', 'addProduct')->name('categories-add-product');
+    Route::get('/categories/{categories}/product/{product}/remove', 'removeProduct')->name('categories-remove-product');
+ 
+ });

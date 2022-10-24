@@ -19,7 +19,7 @@
             <ul class="nav-list">
                 <li><a href="{{ route('restaurant-list') }}">Restaurants</a></li>
                 <li><a href="">Location</a></li>
-                <li><a href="">Category</a></li>
+                <a href="{{ route('categories-list')}}">Category</a>
                 <!--@.can('view', \App\Models\User::class)
                 <li><a href="{.{ route('user-list') }}">User</a></li>
                 @.endcan-->

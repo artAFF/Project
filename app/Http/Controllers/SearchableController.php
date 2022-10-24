@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
+
 abstract class SearchableController extends Controller
 {
     abstract function getQuery() : Builder;
