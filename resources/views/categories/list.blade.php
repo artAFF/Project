@@ -27,7 +27,7 @@
             </ul>
         </nav>
             
-        <div>{{ $categories->withQueryString()->links() }}</div>
+       {{--  <div>{{ $categories->withQueryString()->links() }}</div> --}}
             
         <table class="cmp-data">
             <thead>
@@ -59,3 +59,5 @@
     </main>
 
 @endsection
+
+{{-- ของหวาน ของทอด เครื่องดื่ม --}}
