@@ -50,7 +50,7 @@
                         {{ $categories->name }}
                     </td>
                     <td>
-                        {{ $categories->products_count }}
+                        {{ $categories->restaurants_count }}
                     </td>
                 </tr>
                 @endforeach

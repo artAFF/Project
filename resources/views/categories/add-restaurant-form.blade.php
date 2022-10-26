@@ -6,7 +6,7 @@
 
    
         <main>
-            <form action="{{ route('categories-view-product', ['categories' => $categories->code,]) }}" method="get" class="search-form">
+            <form action="{{ route('categories-view-restaurant', ['categories' => $categories->code,]) }}" method="get" class="search-form">
                 <label>
                     Search
                         <input type="text" name="term" value="{{ $search['term'] }}" />
@@ -25,7 +25,7 @@
                 </label><br />
                 
                 <button type="submit" class="primary">Search</button>
-                    <a href="{{ route('categories-view-product', ['categories' => $categories->code,]) }}">
+                    <a href="{{ route('categories-view-restaurant', ['categories' => $categories->code,]) }}">
                 <button type="button" class="accent">Clear</button>
                 </a>
             </form>
@@ -33,18 +33,18 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="{{ route('categories-add-product-form', [
+                        <a href="{{ route('categories-add-restaurant-form', [
                             'categories' => $categories->code,
                             ]) }}">Remove Product</a>
                     </li>
-                    <li><a href="{{ route('categories-view-product', 
+                    <li><a href="{{ route('categories-view-restaurant', 
                     ['categories' => $categories->code,]) }}"> Back</a></li>
                 </ul>
             </nav>
 
                 <div>{{ $products->withQueryString()->links() }}</div>
                 
-            <form action="{{ route('categories-add-product-form', [
+            <form action="{{ route('categories-add-restaurant-form', [
                     'categories' => $categories->code, ]) }}" method="post">
                     @csrf       
                 <table class="cmp-data">
@@ -59,24 +59,24 @@
                     </thead>
 
                     <tbody>
-                        @foreach($products as $product)
+                        @foreach($restaurants as $restaurants)
                         <tr>
                             <th>
-                                <a href="{{ route('product-view', [
-                                'product' => $product->code,]) }}">
-                                {{ $product->code }} 
+                                <a href="{{ route('restaurant-view', [
+                                'restaurant' => $restaurant->code,]) }}">
+                                {{ $restaurant->code }} 
                             </a></th>
                             <td>
-                                {{ $product->name }}
+                                {{ $restaurant->name }}
                             </td>
                             <td>
-                                {{ $product->category->name }}
+                                {{ $restaurant->category->name }}
                             </td>
                             <td>
-                                {{ $product->price }}
+                                {{ $restaurant->price }}
                             </td>
                             <td>          
-                                <button type="submit" name="product" value="{{ $product->code }}">Add</button>
+                                <button type="submit" name="restaurant" value="{{ $restaurant->code }}">Add</button>
                             </td>
                         </tr>
                         @endforeach

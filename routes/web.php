@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CategoryController;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,9 +56,11 @@ Route::controller(CategoryController::class)->group(function() {
     Route::get('/categories/{categories}/delete', 'delete')->name('categories-delete');
  
     Route::get('/categories/{categories}','show')->name('categories-view');
-    Route::get('/categories/{categories}/product', 'showProduct')->name('categories-view-product');
-    Route::get('/categories/{categories}/product/add', 'addProductForm')->name('categories-add-product-form');
-    Route::post('/categories/{categories}/product/add', 'addProduct')->name('categories-add-product');
-    Route::get('/categories/{categories}/product/{product}/remove', 'removeProduct')->name('categories-remove-product');
+    Route::get('/categories/{categories}/product', 'showRestaurant')->name('categories-view-restaurant');
+    Route::get('/categories/{categories}/product/add', 'addRestaurantForm')->name('categories-add-restaurant-form');
+    Route::post('/categories/{categories}/product/add', 'addRestaurant')->name('categories-add-restaurant');
+    Route::get('/categories/{categories}/product/{product}/remove', 'removeRestaurant')->name('categories-remove-restaurant');
  
  });
+
+

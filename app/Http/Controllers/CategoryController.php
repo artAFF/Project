@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\QueryException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Restaurant; 
-use Illuminate\Database\QueryException;
+
 
 
 class CategoryController extends SearchableController
@@ -39,7 +40,7 @@ class CategoryController extends SearchableController
 
     function list(Request $request) {
         $search = $this->prepareSearch($request->getQueryParams());
-        $query = $this->search($search)->withCount('products');
+        $query = $this->search($search)->withCount('restaurants');
 
         session()->put('bookmark.categories-view', $request->getUri());
 
@@ -131,12 +132,12 @@ class CategoryController extends SearchableController
 
     function showRestaurant(
         Request $request,
-        RestaurantController $RestaurantController,
+        RestaurantController $restaurantController,
         $categoriesCode
         ) {
         $categories = $this->find($categoriesCode);
-        $search = $productController->prepareSearch($request->getQueryParams());
-        $query = $productController->filterBySearch($categories->products(), $search);
+        $search = $restaurantController->prepareSearch($request->getQueryParams());
+        $query = $restaurantController->filterBySearch($categories->products(), $search);
         
         session()->put('bookmark.restaurants-view.', $request->getUri());
 
@@ -144,7 +145,7 @@ class CategoryController extends SearchableController
         'title' => "{$this->title} {$categories->code} : Restaurants",
         'categories' => $categories,
         'search' => $search,
-        'restaurants' => $query->paginate(RestaurantController::ITEM_PER_PAG),
+        'restaurants' => $query->paginate(categoryController::ITEM_PER_PAG),
         ]);
         }
 
@@ -152,7 +153,7 @@ class CategoryController extends SearchableController
 
     function addRestaurantForm(
         Request $request,
-        RestaurantController $RestaurantController,
+        RestaurantController $restaurantController,
         $categoryCode,    
     )   {
             /* $this->authorize('add', Category::class); */

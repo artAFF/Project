@@ -74,6 +74,13 @@
                     <td>
                         {{ $product->price }}
                     </td>
+                    <td>
+                            
+                        <a href="{{ route('categories-remove-restaurant', [
+                            'cateogries' => $cateogries->code,
+                            'restaurant' => $restaurants->code,
+                            ]) }}">Remove</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

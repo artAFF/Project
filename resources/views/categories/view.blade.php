@@ -6,23 +6,23 @@
     <main>
         <nav>
             <ul>
-                @can('update', $categories)
+                {{-- @can('update', $categories) --}}
                 <li>
                     <a href="{{ route('categories-update-form', [
                     'categories' => $categories->code,
                     ]) }}">Update</a>
                 </li>
-                @endcan    
-                @can('delete', $categories)
+               {{--  @endcan   --}}  
+               {{--  @can('delete', $categories) --}}
                     <li>
                         <a href="{{ route('categories-delete', [
                         'categories' => $categories->code,
                         ]) }}">Delete</a>
                     </li>
-                @endcan    
-                <li><a href="{{ route('categories-view-product', [
+               {{--  @endcan     --}}
+                <li><a href="{{ route('categories-view-restaurant', [
                     'categories' => $categories->code,
-                    ]) }}">Show Product</a>
+                    ]) }}">Show Restaurant</a>
                 </li>
                 <li>
                 <a href="{{session()->get('bookmark.categories-view.', route('categories-list'))}}">&lt;Back</a>
